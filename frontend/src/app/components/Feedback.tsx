@@ -27,7 +27,7 @@ export default function Feedback() {
           {/* Feedback Text */}
           <p className="text-gray-800 text-2xl leading-relaxed mb-4">
             Codify has completely changed the way I write and share ideas.
-            It's fast, elegant, and super developer-friendly!
+            It&apos;s fast, elegant, and super developer-friendly!
           </p>
 
           {/* User Name */}

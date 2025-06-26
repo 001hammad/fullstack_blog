@@ -24,7 +24,7 @@ export default function AboutSection() {
           </h2>
 
           <p className="text-gray-700 text-sm mb-2 leading-relaxed">
-            Whether you're writing technical tutorials or sharing your thoughts,
+            Whether you&apos;re writing technical tutorials or sharing your thoughts,
             Codify gives you the space to do it beautifully and efficiently.
           </p>
           <p className="text-gray-700 text-sm mb-6 leading-relaxed">

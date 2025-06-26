@@ -190,10 +190,18 @@ type CommentType = {
   replies?: CommentType[];
 };
 
+
+type CurrentUser = {
+  id: string;
+  fullname: string;
+  imageUrl: string;
+};
+
+
 type Props = {
   comment: CommentType;
   postId: string;
-  currentUser: any;
+  currentUser: CurrentUser;
   onCommentDeleted?: (id: number) => void;
 };
 

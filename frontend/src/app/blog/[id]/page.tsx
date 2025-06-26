@@ -427,6 +427,21 @@
 //   );
 // }
 
+
+
+
+
+
+// ###############################################
+// ###############################################
+// ###############################################
+// ###############################################
+// ###############################################
+// ###############################################
+// ###############################################
+// ###############################################
+// ###############################################
+// ###############################################
 "use client";
 
 import { useEffect, useState } from "react";
@@ -493,9 +508,13 @@ export default function BlogDetail() {
         );
         const commentData = await commentRes.json();
         setComments(commentData);
-      } catch (error: any) {
-        setError(error.message);
-      }
+      } catch (error: unknown) {
+  if (error instanceof Error) {
+    setError(error.message);
+  } else {
+    setError("An unknown error occurred");
+  }
+}
     };
 
     fetchBlog();
@@ -672,20 +691,27 @@ export default function BlogDetail() {
         )}
 
         {comments.length === 0 ? (
-          <p className="text-gray-500">No comments yet.</p>
-        ) : (
-          <div className="space-y-6">
-            {comments.map((comment) => (
-              <CommentCard
-                key={comment.id}
-                comment={comment}
-                postId={id}
-                currentUser={user}
-                onCommentDeleted={handleCommentDeleted}
-              />
-            ))}
-          </div>
-        )}
+  <p className="text-gray-500">No comments yet.</p>
+) : user ? (
+  <div className="space-y-6">
+    {comments.map((comment) => (
+      <CommentCard
+        key={comment.id}
+        comment={comment}
+        postId={id}
+        currentUser={{
+          id: user.id,
+          fullname: user.fullName || "Anonymous",
+          imageUrl: user.imageUrl || "",
+        }}
+        onCommentDeleted={handleCommentDeleted}
+      />
+    ))}
+  </div>
+) : (
+  <p className="text-gray-500">Login to view comments.</p>
+)}
+
       </div>
     </div>
   );
