@@ -20,7 +20,7 @@ export default function ChatWidget() {
       {isOpen && (
         <div className="fixed bottom-20 right-4 w-[90vw] h-[75vh] sm:w-[300px] sm:h-[450px] shadow-xl border border-gray-300 rounded-lg overflow-hidden z-50 bg-white">
           <iframe
-            src="http://localhost:8000" // Replace with deployed URL when ready
+            src="https://web-production-40fba.up.railway.app/" // Replace with deployed URL when ready
             title="Codify Chatbot"
             className="w-full h-full"
           />
