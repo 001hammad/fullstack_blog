@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { FaUser, FaCommentDots, FaRegEdit } from 'react-icons/fa'
+import BackButton from '../components/BackButton'
 
 type FeedbackType = {
   id: number
@@ -76,7 +77,7 @@ export default function FeedbackPage() {
   return (
     <div className="max-w-3xl mx-auto my-[120px] px-4 sm:px-6 lg:px-8">
       <h1 className="text-4xl font-extrabold text-center text-[#8FD14F] mb-10 flex items-center justify-center gap-3">
-        <FaCommentDots className="text-blue-600" /> Feedback Wall
+        <FaCommentDots className="text-[#B22222]" /> Feedback Wall
       </h1>
 
       {/* Form */}
@@ -86,7 +87,7 @@ export default function FeedbackPage() {
       >
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            <FaUser className="inline mr-2 text-blue-600" />
+            <FaUser className="inline mr-2 text-[#B22222]" />
             Your Name
           </label>
           <input
@@ -101,7 +102,7 @@ export default function FeedbackPage() {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            <FaCommentDots className="inline mr-2 text-blue-600" />
+            <FaCommentDots className="inline mr-2 text-[#B22222]" />
             Your Feedback
           </label>
           <textarea
@@ -120,6 +121,7 @@ export default function FeedbackPage() {
         >
           🚀 Submit Feedback
         </button>
+        <p><BackButton/></p>
       </form>
 
       {/* Feedback List */}
@@ -132,7 +134,7 @@ export default function FeedbackPage() {
             <div className="flex justify-between items-center mb-2">
               <div>
                 <p className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                  <FaUser className="text-blue-600" /> {fb.user_name}
+                  <FaUser className="text-[#B22222]" /> {fb.user_name}
                 </p>
                 <p className="text-sm text-gray-500">
                   {new Date(fb.created_at).toLocaleString()}
@@ -142,7 +144,7 @@ export default function FeedbackPage() {
               {formData.user_name === fb.user_name && editingId !== fb.id && (
                 <button
                   onClick={() => handleEdit(fb.id, fb.content)}
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center gap-1"
+                  className="text-[#B22222] hover:text-red-800 text-sm font-medium flex items-center gap-1"
                 >
                   <FaRegEdit /> Edit
                 </button>

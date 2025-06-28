@@ -78,7 +78,7 @@ export default function Navbar() {
         <div className="flex flex-col p-4 space-y-4">
           <Link href="/" onClick={() => setMenuOpen(false)} className="text-white hover:text-[#8FD14F]">Home</Link>
           <Link href="/blogs" onClick={() => setMenuOpen(false)} className="text-white hover:text-[#8FD14F]">Blog</Link>
-          <Link href="/add-blog" onClick={() => setMenuOpen(false)} className="text-white hover:text-[#8FD14F]">Write</Link>
+          <Link href="/AddBlog" onClick={() => setMenuOpen(false)} className="text-white hover:text-[#8FD14F]">Write</Link>
             <Link href="/FeedBack" className="text-white bg-[#8FD14F] px-3 py-1.5 rounded hover:bg-lime-500 font-semibold transition shadow-sm">Feedback</Link>
           <Link href="/contact" onClick={() => setMenuOpen(false)} className="text-white hover:text-[#8FD14F]">Contact</Link>
           {isAdmin && (

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Label = () => {
   return (
-    <section className="w-full bg-[#E8F9FF]    py-34 px-6 sm:px-10 ">
+    <section className="w-full bg-yellow-200    py-34 px-6 sm:px-10 ">
   <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
     
     {/* Left Side: Text */}

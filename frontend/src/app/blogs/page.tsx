@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaBook } from "react-icons/fa";
 import Image from "next/image";
+import BackButton from "../components/BackButton";
 
 type Blog = {
   id: number;
@@ -41,12 +42,13 @@ export default function BlogsPage() {
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">
             Blog
           </h1>
+          <p><BackButton/></p>
           <div className="w-20 h-1 bg-[#8FD14F] rounded"></div>
         </div>
       </div>
 
       {/* Blog Listing Section */}
-      <section className="bg-[#F9FAFB] py-16 px-6 sm:px-10 min-h-screen">
+      <section className="bg-[#F9FAFB py-16 px-6 sm:px-10 min-h-screen">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl flex  font-bold text-[#111827] mb-12 text-left">
             <FaBook /> <p>Latest Blog Posts</p>

@@ -37,7 +37,8 @@ export default function HeroBlogs() {
   }, []);
 
   return (
-    <section className="bg-[#E8F9FF] py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#E8F9FF py-20 px-4 sm:px-6 lg:px-8">
+      <div className="h-0.5 my-12 md:my-28  w-full bg-[#7acb3d]"></div>
       <div className="max-w-7xl mx-auto mb-12">
         <p className="text-sm uppercase text-[#7acb3d] tracking-widest mb-2">
           Blog
@@ -57,7 +58,7 @@ export default function HeroBlogs() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
           {blogs.map((blog) => (
             <Link href={`/blog/${blog.id}`} key={blog.id}>
-              <div className="bg-white border border-[#7acb3d] rounded-lg shadow hover:shadow-lg transition duration-300 cursor-pointer">
+              <div className="bg-whit border border-[#7acb3d] rounded-lg shadow hover:shadow-lg transition duration-300 cursor-pointer">
                 {blog.image_url && (
                   <Image
                     src={blog.image_url}

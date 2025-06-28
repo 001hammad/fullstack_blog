@@ -179,6 +179,7 @@ import {
   FaPenNib,
 } from 'react-icons/fa'
 import { useUser } from '@clerk/nextjs'
+import BackButton from '../components/BackButton'
 
 // const CLOUDINARY_UPLOAD_PRESET = 'blog_upload'
 // const CLOUDINARY_CLOUD_NAME = 'dvu8mor0x'
@@ -262,13 +263,14 @@ export default function AddBlog() {
           <FaPenNib className="text-white text-4xl" />
           <div>
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">Upload Blog</h1>
+            <p><BackButton/></p>
             <div className="w-24 h-1 bg-[#8FD14F] rounded"></div>
           </div>
         </div>
       </div>
 
       {/* Form Section */}
-      <section className="bg-[#F5F5F5] py-20 px-6 sm:px-10">
+      <section className="bg py-20 px-6 sm:px-10">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow space-y-6">
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Title */}

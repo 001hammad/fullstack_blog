@@ -1,10 +1,11 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutSection() {
   return (
-    <section className="bg-[#E8F9FF]">
+    <section className="bg-[#E8F9FF">
       <div className="grid md:grid-cols-2 items-stretch gap-0">
         {/* Left Side: Image */}
         <Image
@@ -16,7 +17,7 @@ export default function AboutSection() {
         />
 
         {/* Right Side: Text with matching height and bg */}
-        <div className="bg-[#E8F9FF] flex flex-col justify-center px-8 py-12">
+        <div className="bg-[#E8F9FF flex flex-col justify-center px-8 py-12">
           <p className="text-sm uppercase text-[#8FD14F] tracking-widest mb-2">About</p>
 
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
@@ -33,9 +34,11 @@ export default function AboutSection() {
             <span className="text-[#8FD14F] font-medium">Tailwind CSS</span>.
           </p>
 
-          <button className="bg-[#8FD14F] hover:bg-[#7acb3d] text-white px-5 py-2 rounded-md text-sm font-medium transition">
+          <Link href='/About'>
+          <button className="bg-[#8FD14F] cursor-pointer hover:bg-[#7acb3d] text-white px-5 py-2 rounded-md text-sm font-medium transition">
             Read More
           </button>
+          </Link>
         </div>
       </div>
     </section>

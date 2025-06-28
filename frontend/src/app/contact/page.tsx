@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import emailjs from 'emailjs-com';
+import BackButton from '../components/BackButton';
 
 export default function Contact() {
   const form = useRef<HTMLFormElement | null>(null);
@@ -39,12 +40,13 @@ export default function Contact() {
       >
         <div>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">Contact</h1>
+          <p><BackButton/></p>
           <div className="w-20 h-1 bg-[#8FD14F] rounded"></div>
         </div>
       </div>
 
       {/* Contact Form Section */}
-      <section className="bg-[#F5F5F5] py-20 px-6 sm:px-10">
+      <section className="bg-[#F5F5F5 py-20 px-6 sm:px-10">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
           {/* Left Info */}
           <div>
@@ -104,7 +106,7 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="bg-[#8FD14F] hover:bg-[#7acb3d] text-white text-sm font-medium px-5 py-2 rounded-md transition"
+              className="bg-[#8FD14F] cursor-pointer hover:bg-[#7acb3d] text-white text-sm font-medium px-5 py-2 rounded-md transition"
             >
               Send Message
             </button>
