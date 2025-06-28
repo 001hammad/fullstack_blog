@@ -228,7 +228,7 @@ export default function AddBlog() {
       finalImageUrl = await uploadImageToCloudinary()
     }
 
-    const res = await fetch('http://localhost:5000/api/posts', {
+    const res = await fetch('https://blogbackend-production-8b57.up.railway.app/api/posts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

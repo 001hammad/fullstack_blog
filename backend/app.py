@@ -113,6 +113,25 @@ class Feedback(db.Model):
 # 📣 FEEDBACK ROUTES
 # --------------------------------------------
 
+
+
+@app.route('/')
+def home():
+    return jsonify({
+        "message": "🚀 Codify Blog API is running successfully!",
+        "status": "OK",
+        "endpoints": [
+            "/api/posts",
+            "/api/comments",
+            "/api/feedback",
+            "/api/posts/<post_id>/like",
+            "/api/posts/<post_id>/comments"
+        ]
+    })
+
+
+
+
 @app.route('/api/feedback', methods=['GET'])
 def get_feedbacks():
     feedbacks = Feedback.query.order_by(Feedback.created_at.desc()).all()
