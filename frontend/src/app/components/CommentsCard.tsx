@@ -215,7 +215,7 @@ export default function CommentCard({ comment, postId, currentUser, onCommentDel
     if (!replyText.trim()) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/posts/${postId}/comments`, {
+      const res = await fetch(`https://blogbackend-production-8b57.up.railway.app/api/posts/${postId}/comments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -246,7 +246,7 @@ export default function CommentCard({ comment, postId, currentUser, onCommentDel
 
     setIsDeleting(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/comments/${comment.id}`, {
+      const res = await fetch(`https://blogbackend-production-8b57.up.railway.app/api/comments/${comment.id}`, {
         method: 'DELETE',
       });
 

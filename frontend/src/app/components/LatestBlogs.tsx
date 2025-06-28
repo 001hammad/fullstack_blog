@@ -24,7 +24,7 @@ export default function HeroBlogs() {
 
   const fetchBlogs = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/posts");
+      const res = await fetch("https://blogbackend-production-8b57.up.railway.app/api/posts");
       const data = await res.json();
       setBlogs(data.slice(0, 3));
     } catch (error) {

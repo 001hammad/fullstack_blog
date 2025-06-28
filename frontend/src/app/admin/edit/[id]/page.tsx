@@ -21,7 +21,7 @@ export default function EditBlogPage() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/posts/${id}`);
+        const res = await fetch(`https://blogbackend-production-8b57.up.railway.app/api/posts/${id}`);
         const data = await res.json();
         setTitle(data.title);
         setContent(data.content);
@@ -38,7 +38,7 @@ export default function EditBlogPage() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`http://localhost:5000/api/posts/${id}`, {
+      const res = await fetch(`https://blogbackend-production-8b57.up.railway.app//api/posts/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

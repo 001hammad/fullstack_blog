@@ -485,26 +485,26 @@ export default function BlogDetail() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/posts/${id}`);
+        const res = await fetch(`https://blogbackend-production-8b57.up.railway.app/api/posts/${id}`);
         if (!res.ok) throw new Error("Blog not found");
         const data = await res.json();
         setBlog(data);
 
         if (user) {
           const likeRes = await fetch(
-            `http://localhost:5000/api/posts/${id}/is-liked?user_id=${user.id}`
+            `https://blogbackend-production-8b57.up.railway.app/api/posts/${id}/is-liked?user_id=${user.id}`
           );
           const likeData = await likeRes.json();
           setLiked(likeData.liked);
         }
         const countRes = await fetch(
-          `http://localhost:5000/api/posts/${id}/likes-count`
+          `https://blogbackend-production-8b57.up.railway.app/api/posts/${id}/likes-count`
         );
         const countData = await countRes.json();
         setLikesCount(countData.count);
 
         const commentRes = await fetch(
-          `http://localhost:5000/api/posts/${id}/comments`
+          `https://blogbackend-production-8b57.up.railway.app/api/posts/${id}/comments`
         );
         const commentData = await commentRes.json();
         setComments(commentData);
@@ -527,7 +527,7 @@ export default function BlogDetail() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/api/posts/${id}/like`, {
+      const res = await fetch(`https://blogbackend-production-8b57.up.railway.app/api/posts/${id}/like`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -538,7 +538,7 @@ export default function BlogDetail() {
       const data = await res.json();
       setLiked(data.liked);
       const updatedCountRes = await fetch(
-        `http://localhost:5000/api/posts/${id}/likes-count`
+        `https://blogbackend-production-8b57.up.railway.app/api/posts/${id}/likes-count`
       );
       const updatedCount = await updatedCountRes.json();
       setLikesCount(updatedCount.count);
@@ -557,7 +557,7 @@ export default function BlogDetail() {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/api/posts/${id}/comments`,
+        `https://blogbackend-production-8b57.up.railway.app/api/posts/${id}/comments`,
         {
           method: "POST",
           headers: {
@@ -575,7 +575,7 @@ export default function BlogDetail() {
       if (res.ok) {
         setNewComment("");
         const updated = await fetch(
-          `http://localhost:5000/api/posts/${id}/comments`
+          `https://blogbackend-production-8b57.up.railway.app/api/posts/${id}/comments`
         );
         const updatedComments = await updated.json();
         setComments(updatedComments);

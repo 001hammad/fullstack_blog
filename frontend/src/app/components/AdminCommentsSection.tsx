@@ -16,7 +16,7 @@ export default function AdminCommentsSection() {
 
   const fetchComments = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/comments')
+      const res = await fetch('https://blogbackend-production-8b57.up.railway.app/api/comments')
       const data = await res.json()
       setComments(data)
     } catch (error) {
@@ -29,7 +29,7 @@ export default function AdminCommentsSection() {
     if (!confirmDelete) return
 
     try {
-      const res = await fetch(`http://localhost:5000/api/comments/${id}`, {
+      const res = await fetch(`https://blogbackend-production-8b57.up.railway.app/api/comments/${id}`, {
         method: 'DELETE',
       })
       if (res.ok) {

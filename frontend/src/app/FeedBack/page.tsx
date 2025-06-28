@@ -25,7 +25,7 @@ export default function FeedbackPage() {
   }, [])
 
   const fetchFeedbacks = async () => {
-    const res = await fetch('http://localhost:5000/api/feedback')
+    const res = await fetch('https://blogbackend-production-8b57.up.railway.app/api/feedback')
     const data = await res.json()
     setFeedbacks(data)
   }
@@ -38,7 +38,7 @@ export default function FeedbackPage() {
     e.preventDefault()
     localStorage.setItem('feedback_user_name', formData.user_name)
 
-    const res = await fetch('http://localhost:5000/api/feedback', {
+    const res = await fetch('https://blogbackend-production-8b57.up.railway.app/api/feedback', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
@@ -57,7 +57,7 @@ export default function FeedbackPage() {
 
   const handleUpdate = async () => {
     const feedbackToEdit = feedbacks.find((fb) => fb.id === editingId)
-    const res = await fetch(`http://localhost:5000/api/feedback/${editingId}`, {
+    const res = await fetch(`https://blogbackend-production-8b57.up.railway.app/api/feedback/${editingId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
