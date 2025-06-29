@@ -6,7 +6,9 @@ export default function Hero() {
   return (
     <section
       className="relative bg-fixed bg-cover bg-center min-h-screen flex items-center px-6 lg:px-20"
-      style={{ backgroundImage: "url('/home.jpg')" }}
+      // style={{ backgroundImage: "url('/coderoom.jpg')" }}
+      // style={{ backgroundImage: "url('/home.jpg')" }}
+      style={{ backgroundImage: "url('/coderoom1.jpg')" }}
     >
       <div className="absolute inset-0 bg-black/60 z-0" />
 
@@ -22,17 +24,17 @@ export default function Hero() {
 
         <div className="flex flex-col md:flex-row gap-4">
   <Link
-    href="/AddBlog"
-    className="flex items-center justify-center gap-2 bg-[#8FD14F] hover:bg-lime-500 text-black px-6 py-3 rounded-md font-medium transition"
-  >
-    <FiEdit3 />
-    Write Blog
-  </Link>
+  href="/AddBlog"
+  className="flex items-center justify-center gap-2 bg-[#8FD14F] hover:bg-lime-500 text-black px-6 py-3 rounded-md font-medium transition group"
+>
+  <FiEdit3 className="transition-transform duration-300 group-hover:rotate-45" />
+  Write Blog
+</Link>
   <Link
     href="/blogs"
-    className="flex items-center justify-center gap-2 border border-white text-white hover:bg-[#8FD14F] hover:text-black px-6 py-3 rounded-md font-medium transition"
+    className="flex items-center justify-center gap-2 border border-white text-white hover:bg-[#8FD14F] hover:text-black px-6 py-3 rounded-md font-medium transition group"
   >
-    <FiBook />
+    <FiBook className='transition-transform duration-300 group-hover:rotate-45'/>
     Browse Blogs
   </Link>
 </div>

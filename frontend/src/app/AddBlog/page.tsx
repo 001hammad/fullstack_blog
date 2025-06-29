@@ -171,12 +171,11 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import {
-  FaArrowLeft,
-  FaArrowRight,
   FaHeading,
   FaFileAlt,
   FaImage,
   FaPenNib,
+  FaSpinner,
 } from 'react-icons/fa'
 import { useUser } from '@clerk/nextjs'
 import BackButton from '../components/BackButton'
@@ -324,14 +323,22 @@ export default function AddBlog() {
             </div>
 
             {/* Submit Button */}
-            <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-[#8FD14F] to-lime-400 text-black font-semibold py-2 rounded-md hover:shadow-md transition flex items-center justify-center gap-2 group"
-            >
-              <FaArrowRight className="text-sm group-hover:-translate-x-1 transition" />
-              {isSubmitting ? 'Uploading...' : 'Upload Blog'}
-              <FaArrowLeft className="text-sm group-hover:translate-x-1 transition" />
-            </button>
+           <button
+  type="submit"
+  className="w-full bg-gradient-to-r from-[#8FD14F] to-lime-400 text-black cursor-pointer font-semibold py-2 rounded-md hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 group"
+  disabled={isSubmitting}
+>
+  {isSubmitting ? (
+    <span className="flex items-center gap-2">
+      <FaSpinner className="animate-spin" />
+      Uploading...
+    </span>
+  ) : (
+    <>
+      Upload Blog
+    </>
+  )}
+</button>
           </form>
         </div>
       </section>

@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import emailjs from 'emailjs-com';
 import BackButton from '../components/BackButton';
+import { IoIosPaperPlane } from 'react-icons/io';
 
 export default function Contact() {
   const form = useRef<HTMLFormElement | null>(null);
@@ -105,11 +106,12 @@ export default function Contact() {
               ></textarea>
             </div>
             <button
-              type="submit"
-              className="bg-[#8FD14F] cursor-pointer hover:bg-[#7acb3d] text-white text-sm font-medium px-5 py-2 rounded-md transition"
-            >
-              Send Message
-            </button>
+  type="submit"
+  className="group flex items-center gap-2 bg-[#8FD14F] cursor-pointer hover:bg-[#7acb3d] text-white text-sm font-medium px-5 py-2 rounded-md transition"
+>
+  <IoIosPaperPlane className="text-lg transition-transform duration-300 group-hover:rotate-45 group-hover:scale-110" />
+  Send Message
+</button>
           </form>
         </div>
       </section>

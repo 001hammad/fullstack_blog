@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { FaUser, FaCommentDots, FaRegEdit } from 'react-icons/fa'
 import BackButton from '../components/BackButton'
+import { IoIosPaperPlane } from 'react-icons/io'
 
 type FeedbackType = {
   id: number
@@ -83,7 +84,7 @@ export default function FeedbackPage() {
     >
       <div>
         <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">
-          Share Your Experience - Help Codify Improve!
+          Your - FeedBack
         </h1>
         <div className="w-20 h-1 bg-[#8FD14F] rounded mt-2"></div>
         <p><BackButton /></p>
@@ -107,7 +108,7 @@ export default function FeedbackPage() {
             value={formData.user_name}
             onChange={handleChange}
             required
-            className="block w-full rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="block w-full rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#B22222]"
           />
         </div>
 
@@ -122,20 +123,21 @@ export default function FeedbackPage() {
             value={formData.content}
             onChange={handleChange}
             required
-            className="block w-full rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="block w-full rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#B22222]"
           />
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-gradient-to-r from-[#8FD14F] to-lime-400 text-white font-bold py-2 rounded-xl hover:shadow-xl transition"
-        >
-          🚀 Submit Feedback
-        </button>
+       <button
+  type="submit"
+  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#8FD14F] to-lime-400 text-white font-bold py-3 rounded-xl hover:shadow-lg hover:shadow-lime-200/50 transition-all duration-300 group"
+>
+  <IoIosPaperPlane className="text-lg group-hover:rotate-45 group-hover:scale-110 transition-transform duration-300" />
+  Submit Feedback
+</button>
       </form>
 
       {/* Feedback List */}
-      <div className="mt-12 space-y-6">
+      <div className="mt-14 mb-12 space-y-6">
         {feedbacks.map((fb) => (
           <div
             key={fb.id}

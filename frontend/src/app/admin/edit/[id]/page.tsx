@@ -3,12 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { RxUpdate } from 'react-icons/rx';
+import BackButton from '@/app/components/BackButton';
 
-// type Blog = {
-//   id: number;
-//   title: string;
-//   content: string;
-// };
 
 export default function EditBlogPage() {
   const { id } = useParams();
@@ -94,6 +90,7 @@ export default function EditBlogPage() {
   <RxUpdate className="text-lg" />
   Update Blog
 </button>
+<p><BackButton/></p>
 
       </form>
     </div>

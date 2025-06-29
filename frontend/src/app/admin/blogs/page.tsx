@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth, useUser } from '@clerk/nextjs';
-import { FaLockOpen, FaRegEdit, FaTools } from 'react-icons/fa'; // <-- ✅ FaTools imported here
+import { FaLockOpen, FaRegEdit, FaTools } from 'react-icons/fa';
 import { MdDeleteOutline } from 'react-icons/md';
 import AdminCommentsSection from '@/app/components/AdminCommentsSection';
+import AdminFeedBackPage from '@/app/components/AdminPageFeedback';
+import AdminUsersPage from '@/app/components/user';
 
 type Blog = {
   id: number;
@@ -68,70 +70,101 @@ export default function AdminBlogsPage() {
     }
   }, [isSignedIn]);
 
-  if (!isLoaded) return <div className="p-6 text-blue-700">Checking access...</div>;
+  if (!isLoaded) return <div className="flex justify-center items-center h-screen text-blue-700">Checking access...</div>;
   if (!isSignedIn) return null;
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-gray-50">
       {/* Hero Section */}
-      <div
-        className="h-[60vh] bg-cover bg-fixed bg-center flex items-center px-10 sm:px-20"
-        style={{ backgroundImage: "url('/dashboard.jpg')" }}
-      >
-        <div className="flex items-center gap-3">
-          <FaLockOpen className=" text-gray-900 text-4xl sm:text-5xl" />
-          <div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">Admin Dashboard</h1>
-            <div className="w-24 h-1 bg-[#8FD14F] rounded"></div>
+      <div className="relative h-[60vh] w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: "url('/dashboard.jpg')" }}
+        >
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div className="relative h-full flex items-center px-6 sm:px-20 z-10 container mx-auto">
+          <div className="flex items-center gap-4">
+            <FaLockOpen className="text-white text-4xl sm:text-5xl" />
+            <div>
+              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-3">Admin Dashboard</h1>
+              <div className="w-24 h-1.5 bg-[#8FD14F] rounded-full"></div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Admin Blog Table Section */}
-      <div className="p-6 max-w-6xl min-h-screen  mx-auto rounded-lg shadow-lg mt-10">
-        {/* 👇 Added FaTools icon with heading */}
-        <div className="flex justify-center items-center gap-2 mb-8">
-          <FaTools className="text-[#7acb3d] text-2xl" />
-          <h2 className="text-3xl font-bold text-[#7acb3d]">Manage Blogs</h2>
+      {/* Admin Content Section */}
+      <div className="container mx-auto px-4 sm:px-6 py-12">
+        {/* Manage Blogs Section */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
+          <div className="flex justify-center items-center gap-3 mb-8">
+            <FaTools className="text-[#7acb3d] text-2xl" />
+            <h2 className="text-3xl font-bold text-gray-800">Manage Blogs</h2>
+          </div>
+
+          {blogs.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500 text-lg">No blogs found.</p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto rounded-lg border border-gray-200">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-[#7acb3d]">
+                  <tr>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      ID
+                    </th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      Title
+                    </th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {blogs.map((blog) => (
+                    <tr key={blog.id} className="hover:bg-gray-50 transition-colors duration-150">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {blog.id}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 max-w-xs truncate">
+                        {blog.title}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <div className="flex space-x-2">
+                          <Link href={`/admin/edit/${blog.id}`}>
+                            <button className="flex items-center justify-center p-2 rounded-md bg-[#7acb3d] hover:bg-[#69b132] text-white transition-colors duration-200">
+                              <FaRegEdit className="text-lg" />
+                            </button>
+                          </Link>
+                          <button
+                            onClick={() => deleteBlog(blog.id)}
+                            className="flex items-center justify-center p-2 rounded-md bg-red-600 hover:bg-red-700 text-white transition-colors duration-200"
+                          >
+                            <MdDeleteOutline className="text-lg" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
-        {blogs.length === 0 ? (
-          <p className="text-center text-gray-500">No blogs found.</p>
-        ) : (
-          <div className="overflow-x-auto rounded-lg">
-            <table className="w-full border border-gray-200 text-sm">
-              <thead>
-                <tr className="bg-[#7acb3d] text-white text-left">
-                  <th className="p-3">ID</th>
-                  <th className="p-3">Title</th>
-                  <th className="p-3">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {blogs.map((blog) => (
-                  <tr key={blog.id} className="border-t border-gray-200 hover:bg-green-700 duration-300">
-                    <td className="p-3 text-white">{blog.id}</td>
-                    <td className="p-3 text-white">{blog.title}</td>
-                    <td className="p-3 space-x-3">
-                      <Link href={`/admin/edit/${blog.id}`}>
-                        <button className="bg-[#7acb3d] hover:bg-[#69b132] text-white px-4 py-1 rounded transition">
-                          <FaRegEdit className='text-2xl' />
-                        </button>
-                      </Link>
-                      <button
-                        onClick={() => deleteBlog(blog.id)}
-                        className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded transition"
-                      >
-                        <MdDeleteOutline className='text-2xl' />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-        <AdminCommentsSection/>
+        {/* Comments Section */}
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <AdminCommentsSection />
+        </div>
+        <div>
+          <AdminFeedBackPage />
+        </div>
+        <div>
+          <AdminUsersPage/>
+        </div>
       </div>
     </div>
   );

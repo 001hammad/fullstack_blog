@@ -30,9 +30,9 @@ export default function Navbar() {
             {/* <Link href="/FeedBack" className="text-white bg-[#8FD14F] px-3 py-1.5 rounded hover:bg-lime-500 font-semibold transition shadow-sm">Feedback</Link> */}
            <Link
   href="/FeedBack"
-  className="flex items-center gap-2 text-green-800 bg-gradient-to-r from-lime-300 to-green-400 px-5 py-2 rounded-full font-bold shadow-lg border-2 border-green-700 hover:scale-105 hover:from-lime-400 hover:to-green-500 transition-all duration-300"
+  className="flex items-center gap-2 text-green-800 bg-gradient-to-r from-lime-300 to-green-400 px-5 py-2 rounded-full font-bold shadow-lg group border-2 border-green-700 hover:scale-105 hover:from-lime-400 hover:to-green-500 transition-all duration-300"
 >
-  <FaDollarSign className="text-lg text-green-900 drop-shadow" />
+  <FaDollarSign className="text-lg text-green-900 drop-shadow className='transition-transform duration-300 group-hover:rotate-45" />
   Feedback
 </Link>
 

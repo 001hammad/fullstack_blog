@@ -11,9 +11,9 @@ export default function ChatWidget() {
       {/* Floating Chat Icon */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 cursor-pointer animate-bounce hover:animate-none hover:duration-500 right-6 bg-[#8FD14F] hover:border-red-500 hover:border-4 text-white p-3 rounded-full shadow-lg z-[60] hover:scale-105 transition"
+        className="fixed bottom-6 cursor-pointer animate-bounce hover:animate-none hover:duration-500 right-6 bg-[#8FD14F] text-white p-3 rounded-full shadow-lg z-[60] hover:scale-105 transition group"
       >
-        <TbMessageChatbotFilled size={38} />
+        <TbMessageChatbotFilled size={38} className='transition-transform duration-300 group-hover:rotate-45' />
       </button>
 
       {/* Iframe Chatbot Panel */}

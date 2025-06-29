@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { FaTools } from 'react-icons/fa'
 import { MdDeleteOutline } from 'react-icons/md'
 
 type Comment = {
@@ -47,10 +48,11 @@ export default function AdminCommentsSection() {
   }, [])
 
   return (
-    <div className="mt-20 p-6 max-w-6xl mx-auto rounded-lg shadow-lg bg-black border border-gray-200">
-      <h2 className="text-2xl font-bold mb-4 text-[#7acb3d] flex items-center gap-2">
-        💬 Manage Comments
-      </h2>
+    <div className="mt-20 p-6 max-w-full mx-auto rounded-lg shadow-lg border border-gray-200">
+      <div className="flex justify-center items-center gap-3 mb-8">
+                  <FaTools className="text-[#7acb3d] text-2xl" />
+                  <h2 className="text-3xl font-bold text-gray-800">Manage Comments</h2>
+                </div>
 
       {comments.length === 0 ? (
         <p className="text-gray-500">No comments yet.</p>
@@ -69,7 +71,7 @@ export default function AdminCommentsSection() {
             </thead>
             <tbody>
               {comments.map((c) => (
-                <tr key={c.id} className="border-t hover:bg-green-700 text-white">
+                <tr key={c.id} className="border-t hover:bg-gray-100 text-black">
                   <td className="p-3">{c.id}</td>
                   <td className="p-3">{c.blog_id}</td>
                   <td className="p-3">{c.user_name}</td>
