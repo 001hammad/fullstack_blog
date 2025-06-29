@@ -264,7 +264,6 @@ export default function FeedbackPage() {
   }
 
   const handleUpdate = async () => {
-    const feedbackToEdit = feedbacks.find((fb) => fb.id === editingId)
     const res = await fetch(`https://blogbackend-production-8b57.up.railway.app/api/feedback/${editingId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
