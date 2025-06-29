@@ -447,9 +447,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
-import { useUser } from "@clerk/nextjs";
+import { SignInButton, useUser } from "@clerk/nextjs";
 import CommentCard from "@/app/components/CommentsCard";
 import Image from "next/image";
+import BackButton from "@/app/components/BackButton";
 
 type Blog = {
   id: number;
@@ -607,6 +608,48 @@ export default function BlogDetail() {
 
   return (
     <div className="p-6 my-[70px] max-w-full mx-auto bg-[#F5F5F5] rounded-md shadow-md">
+      {/* {user && blog.user_id === user.id && (
+  <div className="mt-4 flex gap-3">
+    <button
+      onClick={() => {
+        window.location.href = `/blog/edit/${blog.id}`;
+      }}
+      className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+    >
+      Edit
+    </button>
+    <button
+      onClick={async () => {
+        const confirmed = window.confirm("Are you sure you want to delete this post?");
+        if (confirmed) {
+          try {
+            const res = await fetch(
+              `https://blogbackend-production-8b57.up.railway.app/api/posts/${blog.id}`,
+              {
+                method: "DELETE",
+              }
+            );
+            if (res.ok) {
+              alert("Blog deleted");
+              window.location.href = "/blog";
+            } else {
+              const data = await res.json();
+              alert("Failed to delete blog: " + data.error || "Unknown error");
+            }
+          } catch (error) {
+            console.error("Delete error:", error);
+            alert("An error occurred while deleting");
+          }
+        }
+      }}
+      className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+    >
+      Delete
+    </button>
+  </div>
+)} */}
+
+<p><BackButton/></p>
       {blog.image_url && (
         <Image
           src={blog.image_url}
@@ -616,7 +659,6 @@ export default function BlogDetail() {
           className="w-full h-auto rounded-md mb-4"
         />
       )}
-
       {/* ✅ Avatar & Name */}
       <div className="flex items-center gap-3 mb-4">
         {blog.user_image ? (
@@ -687,7 +729,7 @@ export default function BlogDetail() {
             </div>
           </div>
         ) : (
-          <p className="text-gray-500 mb-4">Please login to post a comment.</p>
+          <p className="text-red-500 mb-4">Please <SignInButton><button className="hover:underline cursor-pointer font-semibold">Login</button></SignInButton> to post a comment.</p>
         )}
 
         {comments.length === 0 ? (

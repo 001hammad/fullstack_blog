@@ -74,7 +74,7 @@ export default function BlogsPage() {
                       <p className="text-sm text-gray-400 mb-2">
                         {new Date(blog.created_at).toLocaleDateString()}
                       </p>
-                      <h2 className="text-xl font-semibold text-gray-800 hover:text-[#8FD14F] transition-colors">
+                      <h2 className="text-xl font-semibold text-black hover:underline transition-colors">
                         {blog.title}
                       </h2>
                       <p className="text-gray-600 mt-3 line-clamp-3">

@@ -75,12 +75,23 @@ export default function FeedbackPage() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto my-[120px] px-4 sm:px-6 lg:px-8">
-      <h1 className="text-4xl font-extrabold text-center text-[#8FD14F] mb-10 flex items-center justify-center gap-3">
-        <FaCommentDots className="text-[#B22222]" /> Feedback Wall
-      </h1>
+  <div className="">
+    {/* ✅ Hero Banner (Full Width Image) */}
+    <div
+      className="h-[60vh] bg-cover bg-center flex items-center px-10 sm:px-20"
+      style={{ backgroundImage: "url('/review.jpg')" }}
+    >
+      <div>
+        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">
+          Share Your Experience - Help Codify Improve!
+        </h1>
+        <div className="w-20 h-1 bg-[#8FD14F] rounded mt-2"></div>
+        <p><BackButton /></p>
+      </div>
+    </div>
 
-      {/* Form */}
+    {/* ✅ Main Section - Form & Feedback */}
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
       <form
         onSubmit={handleSubmit}
         className="bg-white rounded-xl shadow-lg p-6 space-y-6 border border-gray-200"
@@ -121,7 +132,6 @@ export default function FeedbackPage() {
         >
           🚀 Submit Feedback
         </button>
-        <p><BackButton/></p>
       </form>
 
       {/* Feedback List */}
@@ -173,5 +183,5 @@ export default function FeedbackPage() {
         ))}
       </div>
     </div>
-  )
-}
+  </div>
+);}
