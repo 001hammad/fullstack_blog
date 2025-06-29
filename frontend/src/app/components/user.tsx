@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 // 👇 Define the User type based on your backend model
@@ -23,11 +24,14 @@ export default function AdminUsersPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {users.map((user) => (
           <div key={user.id} className="bg-white p-4 rounded shadow">
-            <img
-              src={user.image_url}
-              alt={user.name}
-              className="w-16 h-16 rounded-full"
-            />
+           <Image
+  src={user.image_url}
+  alt={user.name}
+  width={64}
+  height={64}
+  className="rounded-full object-cover"
+/>
+
             <p className="mt-2 font-semibold">{user.name}</p>
             <p className="text-xs text-gray-500">{user.id}</p>
             <p className="text-xs text-gray-400">
